@@ -112,8 +112,15 @@ public class Graph {
         }
         
         public Vertex getV(int index){
-            for(vertex)
+            for(Vertex v : this.vertices){
+                if(v.getLabel() == index){
+                    return v;
+                }
+            }
+            return null;
         }
+        
+        //TODO: make getter for edge with two vertex params
         
         
 }
