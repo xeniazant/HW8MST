@@ -30,7 +30,7 @@ public class Graph {
         edges = arr;
         vertices = new Vertex[n];
         for(int i = 0; i < n; i++){
-            vertices[i] = new Vertex(i , -1);
+            vertices[i] = new Vertex(i , Edge.INFINITE_WEIGHT);
         }
     }
     
@@ -164,19 +164,16 @@ public class Graph {
         //---------Prim's MST--------//
         
         public void primMst(){
-            for(Vertex v : vertices){
-                v.setKey(-1);
-                v.setParent(null);
-            }
             vertices[0].setKey(0);
             PriorityQueue<Vertex> q = new PriorityQueue();
             while(!q.isEmpty()){
                 Vertex u = q.poll();
                 for(int i = 0 ; i < n; i++){
-                    if(edges[u.getLabel()][i] != null){
+                    if(edges[u.getLabel()][i].getExists()){
                         Vertex v = getV(i);
-                        if(isStillInQ(q , i) && ){
-                        
+                        if(isStillInQ(q , i) && getEdge(u , v).getWeight() < v.getKey()){
+                            v.setParent(u);
+                            decreaseKey(q , v.getLabel() , getEdge(u , v ).getWeight());
                         }
                     }
                     
