@@ -10,6 +10,11 @@ import java.util.PriorityQueue;
 /**
  *
  * @author awhitley
+ *  @author Xenia Zantello 
+    For Adam Whitley's Algorithms and Data structures class.
+    The purpose of this code is to implement graph functionality and 
+    Prim's algorithm for finding minimum spanning trees.
+    11/20/2017
  */
 public class Graph {
 
@@ -119,11 +124,20 @@ public class Graph {
     
     }
     //------ Getters and Setters---//
-        
+        /**
+         * 
+         * @return Returns global n value describing size of both dimensions of 2d array.
+         */
         public int getN(){
             return this.n;
         }
         
+        
+        /**
+         * 
+         * @param index describes the index of the vertex to be returned
+         * @return 
+         */
         public Vertex getV(int index){
             for(Vertex v : this.vertices){
                 if(v.getLabel() == index){
@@ -134,6 +148,12 @@ public class Graph {
         }
         
         
+        /**
+         * 
+         * @param v0 describes the first vertex enclosing the edge to be returned
+         * @param v1 describes the second vertex enclosing the edge to be returned
+         * @return returns the edge object connecting the two vertices or null if one does not exist.
+         */
         public Edge getEdge(Vertex v0 , Vertex v1){
             int v0Lab = v0.getLabel();
             int v1Lab = v1.getLabel();
@@ -151,6 +171,10 @@ public class Graph {
         
         //---------Print Graph----///
         
+        
+        /**
+         *  public method to print "n" value of the graph object, as well as a formatted version of the adjacency matrix.
+         */
         public void printGraph(){
             System.out.println("N is : " + this.n);
             for(int i = 0; i < this.edges.length ; i++){
@@ -161,11 +185,28 @@ public class Graph {
             }
         }
         
+        /**
+         * public method to print all vertex objects in out array of those objects
+         */
+        public void printV(){
+            for(Vertex v : vertices){
+                System.out.println(v);
+            }
+        
+        }
+        
         //---------Prim's MST--------//
         
+        
+        /**
+         * 
+         */
         public void primMst(){
-            vertices[0].setKey(0);
+            vertices[0].setKey(0); // For this example we are starting at index 0 
             PriorityQueue<Vertex> q = new PriorityQueue();
+            for(Vertex v : vertices){
+                q.add(v); //for loop to add all vertex objects to min-priority-queue
+            }
             while(!q.isEmpty()){
                 Vertex u = q.poll();
                 for(int i = 0 ; i < n; i++){
