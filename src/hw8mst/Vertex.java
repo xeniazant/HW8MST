@@ -11,6 +11,7 @@ public class Vertex implements Comparable<Vertex>, java.util.Comparator<Vertex> 
     private final int label; // immutable data field for the label or "name" of the vertex
     private int key; // the Prim's MST key of this vertex
     private Vertex parent; // handle to the parent Vertex
+    
 
     // ----- Class Methods -----
     public Vertex(int label, int key) {

@@ -21,7 +21,19 @@ public class Graph {
     
     // You need to declare the other data fields, too!
     // You need to define all the constructor(s) and other class methods, too!
-
+    
+    
+    //----------CONSTRUCTOR--------------//
+    
+    Graph(Edge[][] arr){
+        n = arr.length;
+        edges = arr;
+        vertices = new Vertex[n];
+        for(int i = 0; i < n; i++){
+            vertices[i] = new Vertex(i , -1);
+        }
+    }
+    
     // ----- Private Helper Methods -----
     /**
      * Tells you whether a Vertex with the provided label is still in the queue
@@ -39,7 +51,7 @@ public class Graph {
         Vertex[] array = q.toArray(new Vertex[0]); // dump out an array of the elements
 
         // traverse the array of elements, searching for a matching label
-        for (int i = 0; i < array.length; i++) {
+        for(int i = 0; i < array.length; i++) {
             if ((array[i]).getLabel() == label) {
                 return true;
             }
@@ -121,7 +133,7 @@ public class Graph {
             return null;
         }
         
-        //TODO: make getter for edge with two vertex params
+        
         public Edge getEdge(Vertex v0 , Vertex v1){
             int v0Lab = v0.getLabel();
             int v1Lab = v1.getLabel();
@@ -134,6 +146,43 @@ public class Graph {
                 }
             }
             return null;
+        }
+        
+        
+        //---------Print Graph----///
+        
+        public void printGraph(){
+            System.out.println("N is : " + this.n);
+            for(int i = 0; i < this.edges.length ; i++){
+                for(int j = 0; j < this.edges.length ; j++){
+                    System.out.print(this.edges[i][j] + "   ");
+                }
+                System.out.println();
+            }
+        }
+        
+        //---------Prim's MST--------//
+        
+        public void primMst(){
+            for(Vertex v : vertices){
+                v.setKey(-1);
+                v.setParent(null);
+            }
+            vertices[0].setKey(0);
+            PriorityQueue<Vertex> q = new PriorityQueue();
+            while(!q.isEmpty()){
+                Vertex u = q.poll();
+                for(int i = 0 ; i < n; i++){
+                    if(edges[u.getLabel()][i] != null){
+                        Vertex v = getV(i);
+                        if(isStillInQ(q , i) && ){
+                        
+                        }
+                    }
+                    
+                }
+                
+            }
         }
         
 }
