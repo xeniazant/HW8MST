@@ -107,6 +107,7 @@ public class Graph {
     
     }
     //------ Getters and Setters---//
+        
         public int getN(){
             return this.n;
         }
@@ -121,6 +122,18 @@ public class Graph {
         }
         
         //TODO: make getter for edge with two vertex params
-        
+        public Edge getEdge(Vertex v0 , Vertex v1){
+            int v0Lab = v0.getLabel();
+            int v1Lab = v1.getLabel();
+            
+            for(int i = 0 ; i < edges.length; i++){
+                for(int j = 0; j < edges.length; j++){
+                    if(i == v0Lab && j == v1Lab){
+                        return edges[i][j];
+                    }
+                }
+            }
+            return null;
+        }
         
 }
