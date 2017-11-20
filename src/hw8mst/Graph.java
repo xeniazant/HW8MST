@@ -15,6 +15,10 @@ public class Graph {
 
     // ----- Data Fields -----
     private Vertex[] vertices; // DO NOT rename me without Refactor --> Rename, or you'll break decreaseKey.
+    private int n; //int representing number of vertices in graph
+    private Edge[][] edges; // 2d array of Edge objects size n by n representing the adjacency matrix
+   
+    
     // You need to declare the other data fields, too!
     // You need to define all the constructor(s) and other class methods, too!
 
@@ -98,5 +102,18 @@ public class Graph {
         q.add(vertexToDecrease); // insert the decreased vertex back in
 
         return true; // queue is now effectively identical to before, but with one Vertex's key reduced to newKey
+   
+    
+    
     }
+    //------ Getters and Setters---//
+        public int getN(){
+            return this.n;
+        }
+        
+        public Vertex getV(int index){
+            for(vertex)
+        }
+        
+        
 }
